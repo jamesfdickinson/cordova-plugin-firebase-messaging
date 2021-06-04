@@ -39,16 +39,6 @@ module.exports = {
             exec(resolve, reject, PLUGIN_NAME, "getToken", [type || ""]);
         });
     },
-    setBadge: function(value) {
-        return new Promise(function(resolve, reject) {
-            exec(resolve, reject, PLUGIN_NAME, "setBadge", [value]);
-        });
-    },
-    getBadge: function() {
-        return new Promise(function(resolve, reject) {
-            exec(resolve, reject, PLUGIN_NAME, "getBadge", []);
-        });
-    },
     requestPermission: function(options) {
         return new Promise(function(resolve, reject) {
             if (options) {
