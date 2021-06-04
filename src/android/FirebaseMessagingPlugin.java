@@ -28,7 +28,6 @@ import java.util.Set;
 
 import by.chemerisuk.cordova.support.CordovaMethod;
 import by.chemerisuk.cordova.support.ReflectiveCordovaPlugin;
-import me.leolin.shortcutbadger.ShortcutBadger;
 
 import static androidx.core.content.ContextCompat.getSystemService;
 
@@ -129,25 +128,6 @@ public class FirebaseMessagingPlugin extends ReflectiveCordovaPlugin {
             sendNotification(lastBundle, callbackContext);
             lastBundle = null;
         }
-    }
-
-    @CordovaMethod
-    private void setBadge(int value, CallbackContext callbackContext) {
-        if (value >= 0) {
-            Context context = cordova.getActivity().getApplicationContext();
-            ShortcutBadger.applyCount(context, value);
-
-            callbackContext.success();
-        } else {
-            callbackContext.error("Badge value can't be negative");
-        }
-    }
-
-    @CordovaMethod
-    private void getBadge(CallbackContext callbackContext) {
-        Context context = cordova.getActivity();
-        SharedPreferences settings = context.getSharedPreferences("badge", Context.MODE_PRIVATE);
-        callbackContext.success(settings.getInt("badge", 0));
     }
 
     @CordovaMethod
